@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Vismaya-Ebin/MernQuizAppBackEnd/issues"
   },
-  "homepage": "https://github.com/Vismaya-Ebin/MernQuizAppBackEnd#readme"
+  "homepage": "https://github.com/Vismaya-Ebin/MernQuizAppBackEnd#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.1"
+  }
 }
