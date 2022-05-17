@@ -1,14 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const {getQuestions,postQuestions,updateQuestions,deleteQuestion} = require('../controllers/quiz');
+const {
+  getQuestions,
+  postQuestions,
+  updateQuestions,
+  deleteQuestion,
+  getQuestionsById,
+} = require("../controllers/quiz");
 
- router.route('/getQuestions').get(getQuestions);
+router.route("/getQuestions").get(getQuestions);
 
-router.route('/postQuestions').post(postQuestions);
+router.route("/getQuestionsById/:id").get(getQuestionsById);
 
-router.route('/updateQuestions/:id').put(updateQuestions);
+router.route("/postQuestions").post(postQuestions);
 
-router.route('/deleteQuestion/:id').delete(deleteQuestion);
+router.route("/updateQuestions/:id").put(updateQuestions);
+
+router.route("/deleteQuestion/:id").delete(deleteQuestion);
 
 module.exports = router;

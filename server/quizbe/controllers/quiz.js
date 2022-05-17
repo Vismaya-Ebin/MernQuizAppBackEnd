@@ -22,8 +22,12 @@ const postQuestions = async (req, res) => {
     });
     //save() to DB
     const createData = await questions.save();
+    const obj ={
+      message:"Data saved successfully",
+      createData: req.body
+    }
     if (createData) {
-      res.send(createData);
+      res.send(obj);
     }
   } catch (err) {
     console.log(err);
@@ -45,6 +49,17 @@ const updateQuestions = async (req, res) => {
   }
 };
 
+const getQuestionsById = async (req, res) => {
+  try {
+    //req.params.id = we will get from url
+    const getData = await questionModel.findById(req.params.id);
+    if (getData) {
+      res.send(getData);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 const deleteQuestion = async (req, res) => {
   try {
     const deleQuestion = await questionModel.findByIdAndDelete(req.params.id);
@@ -60,4 +75,5 @@ module.exports = {
   postQuestions,
   updateQuestions,
   deleteQuestion,
+  getQuestionsById,
 };

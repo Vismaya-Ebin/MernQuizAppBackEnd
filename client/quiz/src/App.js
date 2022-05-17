@@ -1,12 +1,20 @@
 
 import './App.css';
+import {Routes,Route} from 'react-router-dom';
+import { CreateQuestion } from './components/CreateQuestion';
+import { EditQuestion } from './components/EditQuestion';
+import { Navbar } from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-    <div className="main">Show</div>
-    <div className="money">Money</div>
-    </div>
+    <>
+    <Navbar/>
+    <Routes>
+    <Route path="/"  exact element={<EditQuestion/>}/>
+    <Route path="/createQuestion" element={<CreateQuestion/>}/>
+      <Route path="/editQuestion" element={<EditQuestion/>}/>
+    </Routes>
+    </>
   );
 }
 
