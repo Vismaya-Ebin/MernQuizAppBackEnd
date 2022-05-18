@@ -3,8 +3,9 @@ const getQuestions = async (req, res) => {
   try {
     //getting all the questions from db using model
     const questions = await questionModel.find({});
+    const obj = {message:"Fetched data successfully","questions":questions}
     if (questions) {
-      res.json(questions);
+      res.json(obj);
     }
   } catch (err) {
     console.log(err);
@@ -42,7 +43,7 @@ const updateQuestions = async (req, res) => {
       req.body
     );
     if (updateData) {
-      res.send(` Update data successfully`);
+      res.send({message:` Update data successfully`,data:req.body});
     }
   } catch (err) {
     console.log(err);

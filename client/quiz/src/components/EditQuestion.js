@@ -3,6 +3,7 @@ import "../App.css";
 import axios from "axios";
 
 export function EditQuestion() {
+  const [counter, setCounter] = useState(0);
   const [getData, updateGetData] = useState([]);
   //Array of object for POST API call
   const [question, updateQuestions] = useState({
@@ -16,7 +17,7 @@ export function EditQuestion() {
 
   const getAllCurrentQuestion = async () => {
     axios
-      .get("http://localhost:5000/getQuestions/")
+      .get("http://localhost:4000/getQuestions/")
       .then((res) => {
         console.log("Get allquestions on left", res.data);
         updateGetData(res.data);
@@ -27,7 +28,7 @@ export function EditQuestion() {
   };
   useEffect(() => {
     getAllCurrentQuestion();
-  }, []);
+  }, [counter]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -38,12 +39,12 @@ export function EditQuestion() {
     }));
   };
   const handleSubmit = async (id) => {
-    console.log("handleSubmit", id,question);
+    console.log("handleSubmit", id, question);
     await axios
-      .put("http://localhost:5000/updateQuestions/" + id, question)
+      .put("http://localhost:4000/updateQuestions/" + id, question)
       .then((res) => {
         console.log("res", res);
-        getAllCurrentQuestion();
+        setCounter(counter + 1);
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +53,7 @@ export function EditQuestion() {
   const handleSelected = async (item) => {
     console.log("handleSelected", item);
     await axios
-      .get(`http://localhost:5000/getQuestionsById/${item._id}`)
+      .get(`http://localhost:4000/getQuestionsById/${item._id}`)
       .then((res) => {
         console.log("res", res);
         updatedId(res.data._id);
@@ -73,10 +74,12 @@ export function EditQuestion() {
   };
   const deleteItem = async (id) => {
     await axios
-      .delete(`http://localhost:5000/deleteQuestion/${id._id}`)
+      .delete(`http://localhost:4000/deleteQuestion/${id._id}`)
       .then((res) => {
         console.log("res", res);
-        getAllCurrentQuestion();
+
+        setCounter(counter + 1);
+        console.log("counter", counter);
       })
       .catch((err) => {
         console.log("err", err);
@@ -159,6 +162,7 @@ export function EditQuestion() {
             id="answer"
             name="answer"
             value={question.answer}
+            onChange={handleChange}
           />
           <br />
           <button
