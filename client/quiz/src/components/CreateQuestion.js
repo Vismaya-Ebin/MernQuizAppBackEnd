@@ -91,7 +91,7 @@ export function CreateQuestion() {
         <br />
         <button
           type="submit"
-          className="submitBtn"  onClick={() => handleSubmit()}
+          className="submitBtn"  onClick={handleSubmit}
           
         >
           Submit

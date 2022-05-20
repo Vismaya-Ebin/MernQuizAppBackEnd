@@ -20,7 +20,7 @@ export function EditQuestion() {
       .get("http://localhost:4000/getQuestions/")
       .then((res) => {
         console.log("Get allquestions on left", res.data);
-        updateGetData(res.data);
+        updateGetData(res.data.questions);
       })
       .catch((err) => {
         console.log(err);
@@ -91,34 +91,36 @@ export function EditQuestion() {
   };
   return (
     <div className="App">
+    
+    
       <div className="main">
-        <ul>
-          {getData?.map((data, index) => {
-            return (
-              <li key={index}>
-                {data.question}
-                <button
-                  className="editBtn"
-                  onClick={() => {
-                    handleSelected(data);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="deleteBtn"
-                  onClick={() => {
-                    deleteBtn(data);
-                  }}
-                >
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="money">
+        
+        {getData?.map((data, index) => {
+          return (
+            <div key={index}>
+              {data.question}
+              <button
+                className="editBtn"
+                onClick={() => {
+                  handleSelected(data);
+                }}
+              >
+                Edit
+              </button>
+              <button
+                className="deleteBtn"
+                onClick={() => {
+                  deleteBtn(data);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
+      
+    </div>
+    <div className="money">
         <form>
           <input
             type="text"
