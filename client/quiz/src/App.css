@@ -3,14 +3,18 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  
-  background : linear-gradient(to top left, gold, white);;
-  
-}
 
+  background: linear-gradient(to top left, gold, white);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
 li {
   list-style-type: upper-alpha;
-  color:blue;
+  color: blue;
   font-weight: bold;
   font-style: italic;
 }
@@ -24,8 +28,8 @@ li {
   color: gold;
 }
 .submitBtn {
-  background : linear-gradient(to top left, gold, white);;
-  color:black;
+  background: linear-gradient(to top left, gold, white);
+  color: black;
   border-radius: 3px;
   border: none;
   padding: 10px 30px;
@@ -56,7 +60,7 @@ ul {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background : linear-gradient(to top left, gold, white);;
+  background: linear-gradient(to top left, gold, white);
   color: #fefefe;
 }
 .main {
@@ -80,12 +84,12 @@ button {
   justify-content: flex-start;
   align-items: center;
 }
-input {
+/* input {
   padding: 10px;
   margin: 10px;
   border-radius: 11px;
   width: 100%;
-}
+} */
 
 .navbar {
   width: 100%;
@@ -106,4 +110,19 @@ a {
 }
 a:hover {
   color: gold;
+}
+.nextButton{
+  color: gold;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: black;
+}
+.sucess{
+  color:green;
+}
+.nextButton:hover
+{
+  background-color: gold;
+  color: black;
 }
